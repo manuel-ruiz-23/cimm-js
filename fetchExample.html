@@ -1,0 +1,41 @@
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    p{
+        font-family: sans-serif;
+        font-size: 24px;
+    }
+</style>
+<body>
+    <h1>kanye quote</h1>
+    <p id="quote">cargando...</p>
+    <button onclick="main()">refresh</button>
+</body>
+<script>
+    async function fetchAsync () {
+        // await response of fetch call
+        let response = await fetch('https://api.kanye.rest')
+        // only proceed once promise is resolved
+        let data = await response.json()
+        // only proceed once second promise is resolved
+        return data
+
+    } 
+
+    async function main(){
+        const pQuote = document.querySelector('#quote')        
+        console.log(pQuote)
+
+        const quote = await fetchAsync()
+
+        pQuote.innerHTML = quote.quote
+
+        console.log(quote)
+    }
+
+    main()
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pokedex</title>
+</head>
+<style>
+    /* selector de clase "." */
+    .pokedex{
+        /* Tamaño (alto y ancho) */
+        height: 700px;
+        width: 500px;
+
+        /* color de fondo */
+        background-color: red;
+
+        /* Flebox para acomodar los items */
+        /* indicamos que queremos usar flexbox para acomodar */
+        display: flex;
+        /* centramos horizontalmente*/
+        justify-content: center;
+        /* centramos verticalmente */
+        align-items: center;
+        /* orden de los items desendente */
+        flex-direction: column;
+    }
+    .pantalla{
+        /* Tamaño (alto y ancho - height & width) */
+        height: 400px;
+        width: 400px;
+
+        /* color de fondo */
+        background-color: gainsboro;
+    }   
+    /* selector de Tag */
+    /* Pregunta: ¿como funciona el selector por tag? */
+    .pokemon{
+        /* acomodo con flexbox */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* Tamaño */
+        height: 50px;
+        /* 
+            el porcentaje funciona en base al tamaño heredado del objeto padre 
+            ejemplo al decir 100% son los 400px de la tag pantalla.
+        */
+        width: 100%;
+
+        /* border */
+        border-bottom: 1px solid black;
+
+    }
+</style>
+<body>
+    <!-- contenedor del pokedex -->
+    <div class="pokedex">
+        <h1>pokedex</h1>
+        <div class="pantalla">
+            <!-- cada uno de los elementos div class pokemon es un pokemon en la pantalla -->
+            <div class="pokemon">
+                <p>ditto</p>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
+            </div>
+            <div class="pokemon">
+                <p>charmander</p>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    p{
+        font-family: sans-serif;
+    }
+</style>
+<body>
+    <h1>kanye Rest</h1>
+    <!-- <p id='quote'>cargando...</p> -->
+    <button onclick="fetchKanye()">
+        recargar
+    </button>
+</body>
+<script>
+
+    async function fetchKanye(){
+        var response = await fetch('https://api.kanye.rest')
+        var data = await response.json()
+        console.log(data)
+
+
+
+        var parrafo = document.createElement('p')
+        parrafo.innerHTML = data.quote
+
+        var bodyRef = document.querySelector('body')
+        var parrafoViejoRef = document.querySelector('p')
+        if(parrafoViejoRef){
+        bodyRef.removeChild(parrafoViejoRef)
+
+        }
+        bodyRef.appendChild(parrafo)
+
+        // const quotePTag = document.querySelector('#quote')
+        // console.log(quotePTag)
+        // quotePTag.innerHTML = '<ul><li>algo</li></ul>'
+        // quotePTag.innerHTML = `<h1>${data.quote}</h1>`
+
+    }
+
+    // fetchKanye()
+</script>

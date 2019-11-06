@@ -1,0 +1,55 @@
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+<body>
+    <header>
+        <h1>pokewikia</h1>
+        <p>Buscar pokemon</p>
+        <div>
+            <input id="pokemonSearch">
+            <button onclick="hacerTarea()">
+                buscar
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <h1 id="pokemonNombre">pokemon name</h1>
+        <img src="" id="sprite"/>
+    </main>
+</body>
+<script>
+    var inputRef = document.querySelector('#pokemonSearch')
+
+    async function buscarPokemon(pokemonName){
+        var response = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)
+        var data = await response.json()
+        return data
+    }
+    // buscarPokemon(inputRef.value)
+    async function hacerTarea(){
+        let pokemonName = inputRef.value;
+        console.log(pokemonName)
+        let pokemon = await buscarPokemon(pokemonName)
+
+        let pokemonNameTag = document.querySelector('#pokemonNombre')
+        pokemonNameTag.innerHTML = pokemon.name
+
+        let pokemonSpriteTag = document.querySelector('#sprite')
+        let spriteURL = pokemon.sprites.front_default
+        pokemonSpriteTag.src = spriteURL
+        console.log(pokemon)
+    }
+    // hacer una peticion a la pokeApi
+        // fetch async pokemon
+        // jalar la informacion que queremos
+        // nombre, habilidades y sprite
+
+
+    // sacar las referecias de los elementos html
+    // crear tags para las habilidades
+</script>
